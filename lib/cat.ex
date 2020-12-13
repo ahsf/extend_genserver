@@ -6,12 +6,12 @@ defmodule Cat do
     GenServer.start_link(__MODULE__, %{}, name: __MODULE__)
   end
 
-  def start_miaowing() do
-    GenServer.cast(__MODULE__, :start_miaowing)
+  def start_meowing() do
+    GenServer.cast(__MODULE__, :start_meowing)
   end
 
-  def stop_miaowing() do
-    GenServer.cast(__MODULE__, :stop_miaowing)
+  def stop_meowing() do
+    GenServer.cast(__MODULE__, :stop_meowing)
   end
 
   # ---
@@ -20,26 +20,26 @@ defmodule Cat do
     state =
       state
       |> Animal.init()
-      |> Map.put(:miaowing, false)
+      |> Map.put(:meowing, false)
 
     {:ok, state}
   end
 
   @impl true
-  def handle_cast(:start_miaowing, %{running: false} = state) do
+  def handle_cast(:start_meowing, %{running: false} = state) do
     IO.puts("Meeeooooooow!?")
-    {:noreply, %{state | miaowing: true}}
+    {:noreply, %{state | meowing: true}}
   end
 
   @impl true
-  def handle_cast(:start_miaowing, %{running: true} = state) do
+  def handle_cast(:start_meowing, %{running: true} = state) do
     IO.puts("Meowing? No way. I'm busy running")
     {:noreply, state}
   end
 
   @impl true
-  def handle_cast(:stop_miaowing, state) do
-    {:noreply, %{state | miaowing: false}}
+  def handle_cast(:stop_meowing, state) do
+    {:noreply, %{state | meowing: false}}
   end
 
   # --- super

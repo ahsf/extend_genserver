@@ -6,11 +6,11 @@ defmodule MreInheritTest do
     {:ok, _} = Cat.start_link()
     Animal.start_running(Cat)
     IO.inspect(Animal.get_state(Cat))
-    Cat.start_miaowing()
+    Cat.start_meowing()
     Animal.stop_running(Cat)
-    Cat.start_miaowing()
+    Cat.start_meowing()
     IO.inspect(Animal.get_state(Cat))
-    Cat.stop_miaowing()
+    Cat.stop_meowing()
     IO.inspect(Animal.get_state(Cat))
   end
 
